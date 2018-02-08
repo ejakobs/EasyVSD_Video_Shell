@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="org.invotek.apps.easyvsd_video_shell.VideoPlayer">
+
+    <LinearLayout
+        android:id="@+id/adminPanel"
+        android:layout_width="120dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:background="@color/dimgray"
+        android:visibility="visible">
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_newPage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_video_restart"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_video_skipback"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_video_play"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_video_skipforward"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+        <org.invotek.apps.easyvsd_video_shell.BackgroundHighlightButton
+            android:id="@+id/btn_video_pause"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+    <SurfaceView
+        android:id="@+id/ActivityVideo"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@id/adminPanel"
+        android:scaleType="fitStart"
+        android:visibility="visible"
+        android:contentDescription="@string/activity_video" />
+
+</RelativeLayout>

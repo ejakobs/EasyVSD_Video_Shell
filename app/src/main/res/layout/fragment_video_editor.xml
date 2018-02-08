@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.invotek.apps.easyvsd_video_shell.VideoEditor">
+
+    <SurfaceView
+        android:id="@+id/EditingVideo"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@id/adminPanel"
+        android:scaleType="fitStart"
+        android:visibility="invisible"
+        android:contentDescription="@string/activity_video" />
+
+</FrameLayout>

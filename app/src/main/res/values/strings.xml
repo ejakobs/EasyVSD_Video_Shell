@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EasyVSD_Video_Shell</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_video">Current Activity Video</string>
+    <string name="choose_page_image_source">Choose Video Source</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="image_sources_video">
+        <item>Existing Video</item>
+        <item>New Video</item>
+    </string-array>
+</resources>
