@@ -104,45 +104,57 @@ class MainActivity : AppCompatActivity(),
                 transaction.add(R.id.activity_main, videoEditor, "videoEditor")
             }
         }
-        transaction.commit()
-        showVideoPlayer("")
+        transaction.commitAllowingStateLoss()
+        if(!returnedVideo) {
+            Log.d("MainActivity", "showVideoPlayer: from 108")
+            showVideoPlayer("")
+        }
     }
 
     val cameraVideoPage = 401
     val chooseVideoPage = 411
+    var returnedVideo = false
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         var fileName : String = ""
         when(requestCode){
             cameraVideoPage -> {
                 if(data != null) {
+                    returnedVideo = true
                     var extras: Bundle? = data.extras
                     if (extras != null){
                         fileName = extras.get("FILENAME") as String
                         if(TextUtils.isEmpty(fileName)){
                             fileName = data.data.path
                         }
+                        Log.d("MainActivity", "showVideoEditor: from 125")
                         showVideoEditor(fileName)
                         return
                     }else{
                         val prefs = PreferenceManager.getDefaultSharedPreferences(this@MainActivity)
+                        Log.d("MainActivity", "showVideoEditor: from 130")
                         fileName = prefs.getString("returnedFilename", "")
                         showVideoEditor(fileName)
                         return
                     }
                 }else{
+                    returnedVideo = true
                     val prefs = PreferenceManager.getDefaultSharedPreferences(this@MainActivity)
+                    Log.d("MainActivity", "showVideoEditor: from 137")
                     fileName = prefs.getString("returnedFilename", "")
                     showVideoEditor(fileName)
                     return
                 }
             }
             chooseVideoPage ->{
+                returnedVideo = true
                 fileName = ImageFilePath.getPath(applicationContext, data?.data)
+                Log.d("MainActivity", "showVideoEditor: from 145")
                 showVideoEditor(fileName)
                 return
             }
             else ->{
                 super.onActivityResult(requestCode, resultCode, data)
+                Log.d("MainActivity", "showVideoPlayer: from 151")
                 showVideoPlayer("")
             }
         }
@@ -161,14 +173,17 @@ class MainActivity : AppCompatActivity(),
                         var fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
                         fragmentTransaction.hide(videoPlayer)
                         fragmentTransaction.show(videoEditor)
-                        fragmentTransaction.commit()
+                        fragmentTransaction.commitAllowingStateLoss()
+                        videoPlayer?.hidePlayerView()
                         videoEditor?.setVideoFilename(filename)
                     })
                 })).start()
             }else{
+                Log.d("MainActivity", "showVideoPlayer: from 171")
                 showVideoPlayer("")
             }
         }else{
+            Log.d("MainActivity", "showVideoPlayer: from 176")
             showVideoPlayer("")
         }
     }
@@ -180,8 +195,9 @@ class MainActivity : AppCompatActivity(),
                 var fragmentTransaction : FragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.hide(videoEditor)
                 fragmentTransaction.show(videoPlayer)
-                fragmentTransaction.commit()
                 videoPlayer?.setFilename(filename)
+                fragmentTransaction.commitAllowingStateLoss()
+                videoPlayer?.showPlayerView()
             })
         })).start()
     }

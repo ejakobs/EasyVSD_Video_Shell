@@ -7,6 +7,8 @@
     <string name="choose_page_image_source">Choose Video Source</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="video_saved_at">Video saves at : $%1s</string>
     <string-array name="image_sources_video">
         <item>Existing Video</item>
         <item>New Video</item>

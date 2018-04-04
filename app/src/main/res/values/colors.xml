@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#1f9fd6</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_overlay">#66000000</color>
     <color name="transparent">#00000000</color>
@@ -10,7 +10,7 @@
     <color name="red">#FF0000</color>
     <color name="green">#008000</color>
     <color name="yellow">#FFFF00</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
     <color name="gray">#808080</color>
     <color name="magenta">#FF00FF</color>
     <color name="purple">#800080</color>
@@ -22,4 +22,12 @@
     <color name="dimgray">#696969</color>
     <color name="silver">#C0C0C0</color>
     <color name="springgreen">#00FF7F</color>
+
+    <color name="background_video_color">#2f3031</color>
+    <color name="background_progress_color">#6C6D6D</color>
+    <color name="progress_color">@color/colorPrimary</color>
+    <color name="line_color">#FF15FF00</color>
+    <color name="shadow_color">#FF000000</color>
+    <color name="line_button">#565758</color>
+    <color name="black_translucent">#50000000</color>
 </resources>

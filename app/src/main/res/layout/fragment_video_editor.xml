@@ -1,16 +1,162 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.invotek.apps.easyvsd_video_shell.VideoEditor">
+    android:background="@color/black"
+    tools:context="org.invotek.apps.easyvsd_video_shell.VideoPlayer">
 
-    <SurfaceView
-        android:id="@+id/EditingVideo"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:id="@+id/layout_surface_view"
         android:layout_width="match_parent"
-        android:layout_toLeftOf="@id/adminPanel"
-        android:scaleType="fitStart"
-        android:visibility="invisible"
-        android:contentDescription="@string/activity_video" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textLayout"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <VideoView
+            android:id="@+id/video_loader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="5dp" />
+
+        <ImageView
+            android:id="@+id/icon_video_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/play_button"
+            android:padding="5dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_above="@+id/barLayout"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/tvCenter"
+            android:layout_toStartOf="@+id/tvCenter"
+            android:text="00:00:00"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="----"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/tvCenter"
+            android:layout_toEndOf="@+id/tvCenter"
+            android:text="00:00:00"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/barLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout"
+        android:visibility="visible">
+
+        <SeekBar
+            android:id="@+id/handlerTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:secondaryProgress="0" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black">
+
+
+        <com.waynell.videorangeslider.RangeSlider
+            android:id="@+id/range_slider"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimaryDark"
+            app:leftThumbDrawable="@drawable/thumb_drawable"
+            app:leftThumbIndex="0"
+            app:lineColor="@color/colorAccent"
+            app:lineHeight="3dp"
+            app:rightThumbDrawable="@drawable/thumb_drawable"
+            app:thumbWidth="@dimen/range_thumb_width"
+            app:tickCount="100" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/range_slider"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/black_button_background"
+                android:text="@string/cancel"
+                android:textColor="@android:color/white"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/line_button"/>
+
+            <Button
+                android:id="@+id/btSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/black_button_background"
+                android:text="@string/save"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

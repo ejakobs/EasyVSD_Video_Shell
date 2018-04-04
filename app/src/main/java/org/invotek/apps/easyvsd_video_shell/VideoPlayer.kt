@@ -57,26 +57,26 @@ class VideoPlayer : Fragment(), View.OnClickListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val inflatedView: View = inflater!!.inflate(R.layout.fragment_video_player, container, false)
-        btn_newVideo = inflatedView.findViewById(R.id.btn_newPage) as BackgroundHighlightButton
+        btn_newVideo = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_newPage) as BackgroundHighlightButton
         btn_newVideo?.setForegroundImageResource(mainActivity?.get(), R.drawable.new_page_circle, true)
         btn_newVideo?.setOnClickListener(this)
-        btn_videoRestart = inflatedView.findViewById(R.id.btn_video_restart) as BackgroundHighlightButton
+        btn_videoRestart = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_video_restart) as BackgroundHighlightButton
         btn_videoRestart?.setForegroundImageResource(mainActivity?.get(), R.drawable.restart_button, true)
         btn_videoRestart?.setOnClickListener(this)
-        btn_videoSkipBack = inflatedView.findViewById(R.id.btn_video_skipback) as BackgroundHighlightButton
+        btn_videoSkipBack = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_video_skipback) as BackgroundHighlightButton
         btn_videoSkipBack?.setForegroundImageResource(mainActivity?.get(), R.drawable.skip_back_button, true)
         btn_videoSkipBack?.setOnClickListener(this)
-        btn_videoPlay = inflatedView.findViewById(R.id.btn_video_play) as BackgroundHighlightButton
-        btn_videoPlay?.setForegroundImageResource(mainActivity?.get(), R.drawable.play_button, true)
+        btn_videoPlay = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_video_play) as BackgroundHighlightButton
+        btn_videoPlay?.setForegroundImageResource(mainActivity?.get(), R.drawable.easyvsd_play_button, true)
         btn_videoPlay?.setOnClickListener(this)
-        btn_videoSkipForward = inflatedView.findViewById(R.id.btn_video_skipforward) as BackgroundHighlightButton
+        btn_videoSkipForward = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_video_skipforward) as BackgroundHighlightButton
         btn_videoSkipForward?.setForegroundImageResource(mainActivity?.get(), R.drawable.skip_forward_button, true)
         btn_videoSkipForward?.setOnClickListener(this)
-        btn_videoPause = inflatedView.findViewById(R.id.btn_video_pause) as BackgroundHighlightButton
+        btn_videoPause = inflatedView.findViewById<BackgroundHighlightButton>(R.id.btn_video_pause) as BackgroundHighlightButton
         btn_videoPause?.setForegroundImageResource(mainActivity?.get(), R.drawable.pause_button, true)
         btn_videoPause?.setOnClickListener(this)
 
-        videoSurface = inflatedView.findViewById(R.id.ActivityVideo) as SurfaceView
+        videoSurface = inflatedView.findViewById<SurfaceView>(R.id.ActivityVideo) as SurfaceView
         videoHolder = videoSurface?.holder
         videoHolder?.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
@@ -97,6 +97,10 @@ class VideoPlayer : Fragment(), View.OnClickListener {
             }
         })
         return inflatedView
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        //   super.onSaveInstanceState(outState);
     }
 
     private fun prepVideo() {
@@ -310,7 +314,16 @@ class VideoPlayer : Fragment(), View.OnClickListener {
     var videoFilename : String = ""
     fun setFilename(file : String){
         videoFilename = file
+        Log.d("VideoPlayer", "start_set_video_name: src: " + videoFilename!!)
         prepVideo()
+    }
+
+    fun hidePlayerView(){
+        videoSurface?.setVisibility(View.GONE)
+    }
+
+    fun showPlayerView(){
+        videoSurface?.setVisibility(View.VISIBLE)
     }
 
     private fun playAndMonitorVideo() {
